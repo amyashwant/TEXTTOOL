@@ -1,12 +1,10 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-// import About from "./components/About";
+import About from "./components/About";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
-
- 
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [mode, setMode] = useState("light"); // Whether dark mode is enabled or not
   const [alert, setAlert] = useState(null);
@@ -35,39 +33,36 @@ function App() {
   return (
     <>
       <div className="container mb-3">
-      <Navbar title="React" aboutText="About" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <TextForm heading="Enter the text to be analysed" mode={mode} showAlert={showAlert} />
-      {/* <About mode={mode}/> */}
-        {/* <Router>
-        
-        
+        <Router>
+          <Navbar
+            title="React"
+            aboutText="About"
+            mode={mode}
+            toggleMode={toggleMode}
+          />
+          <Alert alert={alert} />
+
           <Routes>
-            <Route path='/' element={}/>
-            <Route path='/about' element={}/>
+            <Route
+              exact
+              path="/"
+              element={
+                <TextForm
+                  heading="Enter the text to be analysed"
+                  mode={mode}
+                  showAlert={showAlert}
+                />
+              }
+            />
+            <Route exact path="/about" element={<About mode={mode} />} />
           </Routes>
-        </Router> */}
+        </Router>
       </div>
     </>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import "./App.css";
 // import About from "./Components/About";
@@ -116,7 +111,7 @@ export default App;
 
 //   return (
 //     <>
-      
+
 //         <Navbar
 //           title={"textutils"}
 //           about="About"
